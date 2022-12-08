@@ -1,0 +1,51 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Tutorial", "DarkTheme")
+
+local Tutorial = Window:NewTab("Tutorial")
+local TutorialSection = Tutorial:NewSection("Tutorial")
+
+TutorialSection:NewSlider("Walkspeed", "Speed", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+TutorialSection:NewSlider("JumpPower", "Jump", 500, 15, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+TutorialSection:NewButton("Give all guns", "You get all guns", function()
+
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["AK-47"].ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver["Remington 870"].ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].single.M9.ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+ 
+local A_1 = game:GetService("Workspace")["Prison_ITEMS"].single["Key card"].ITEMPICKUP
+local Event = game:GetService("Workspace").Remote.ItemHandler
+Event:InvokeServer(A_1)
+
+
+end)
+
+local Cobra = Window:NewTab("Cobra")
+local CobraSection = Cobra:NewSection("Cobra")
+
+CobraSection:NewToggle("Auto Hp", "Automatic Hp +++", function(state)
+    if state then
+ 
+local Event = game:GetService("ReplicatedStorage").Remotes.Bench
+Event:FireServer()
+
+    else
+        print("leave game ")
+    end
+end)
